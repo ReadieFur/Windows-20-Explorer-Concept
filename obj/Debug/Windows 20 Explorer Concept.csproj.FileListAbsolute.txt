@@ -1,7 +1,6 @@
 C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\bin\Debug\Windows 20 Explorer Concept.exe.config
 C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\bin\Debug\Windows 20 Explorer Concept.exe
 C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\bin\Debug\Windows 20 Explorer Concept.pdb
-C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept.csprojAssemblyReference.cache
 C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\obj\Debug\App.g.cs
 C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept_MarkupCompile.cache
 C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept_MarkupCompile.lref
@@ -13,3 +12,4 @@ C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\obj\Debug\Windows 20
 C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept.pdb
 C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\obj\Debug\Explorer20.g.cs
 C:\Users\kofre\Documents\GitHub\Windows-20-Explorer-Concept\obj\Debug\Explorer20.baml
+C:\Users\kOFRe\Documents\GitHub\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept_Content.g.cs
