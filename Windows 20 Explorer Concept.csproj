@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Styles.cs" />
     <Page Include="Explorer20.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,8 +71,15 @@
       <DependentUpon>Explorer20.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ExplorerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExplorerPage.xaml.cs">
+      <DependentUpon>ExplorerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -98,6 +108,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Resource Include="Assets\dll.ico" />
+    <Resource Include="Assets\bat.ico" />
+    <Resource Include="Assets\Explorer.png" />
+    <Resource Include="Assets\RecycleBin.ico" />
+    <Resource Include="Assets\ThisPC.ico" />
+    <Resource Include="Assets\txt.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
