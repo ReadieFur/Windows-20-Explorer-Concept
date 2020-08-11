@@ -17,11 +17,14 @@ D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\bin\Debug\Window
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\bin\Debug\Windows 20 Explorer Concept.exe
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\bin\Debug\Windows 20 Explorer Concept.pdb
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Explorer20.g.cs
+D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\ExplorerPage.g.cs
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\App.g.cs
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept_Content.g.cs
+D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept_MarkupCompile.cache
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept_MarkupCompile.lref
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Explorer20.baml
+D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\ExplorerPage.baml
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept.g.resources
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Windows_20_Explorer_Concept.Properties.Resources.resources
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept.csproj.GenerateResource.cache
@@ -29,5 +32,5 @@ D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Window
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept.exe
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept.pdb
 D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Windows 20 Explorer Concept.csprojAssemblyReference.cache
-D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\ExplorerPage.g.cs
-D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\ExplorerPage.baml
+D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\Simple Styles.baml
+D:\kOFRe\Documents\Github\kOFReadie\Windows-20-Explorer-Concept\obj\Debug\App.baml

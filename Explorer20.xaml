@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Windows_20_Explorer_Concept"
-        mc:Ignorable="d" WindowStyle="None" AllowsTransparency="true" Background="#72FFFFFF" ResizeMode="CanResizeWithGrip"
-        Title="Explorer 20" Height="550" Width="950" MinHeight="550" MinWidth="950" Loaded="Window_Loaded">
+        mc:Ignorable="d" WindowStyle="None" AllowsTransparency="true" Background="{Binding backgroundSolid45}" ResizeMode="CanResizeWithGrip"
+        Title="Explorer - Win20 Concept" Height="550" Width="950" MinHeight="550" MinWidth="950" Loaded="Window_Loaded" Foreground="{x:Null}">
+
+    <Window.DataContext>
+        <local:XAMLStyles/>
+    </Window.DataContext>
+
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -193,9 +198,9 @@
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
         <Style x:Key="ClearButton" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Foreground" Value="{Binding foregroundSolid}"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -251,6 +256,36 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="TabButton" TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="{Binding backgroundSolid45}"/>
+            <Setter Property="MinWidth" Value="150"/>
+        </Style>
+        <Style x:Key="TabButtonActive" TargetType="{x:Type Grid}" BasedOn="{StaticResource TabButton}">
+            <Setter Property="Background" Value="{Binding backgroundSolid}"/>
+        </Style>
+        <Style x:Key="BindLabel" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="{Binding foregroundSolid}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
     <Grid Margin="0">
         <Grid.RowDefinitions>
@@ -258,19 +293,19 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="192" MinWidth="192"/>
+            <ColumnDefinition Width="200" MinWidth="192"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <GridSplitter Width="5" Foreground="{x:Null}" Background="{x:Null}" Grid.RowSpan="2"/>
 
         <!--#region Top Bar-->
-        <Rectangle x:Name="topBar" Fill="Transparent" StrokeThickness="0" Grid.ColumnSpan="2" MouseDown="topBar_MouseDown" Height="27" VerticalAlignment="Bottom"/>
-        <Label Content="File Explorer" HorizontalAlignment="Left" Margin="35,-1.637,0,1.636" FontWeight="Bold" FontSize="14" VerticalAlignment="Center"/>
-        <Image HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" VerticalAlignment="Center" Width="20" Source="Assets/Explorer.png"/>
+        <Rectangle x:Name="TopBar" Fill="Transparent" StrokeThickness="0" Grid.ColumnSpan="2" MouseDown="TopBar_MouseDown" Height="27" VerticalAlignment="Bottom"/>
+        <Label Content="File Explorer" HorizontalAlignment="Left" Margin="35,-1.637,0,1.636" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Background="{x:Null}" Style="{DynamicResource BindLabel}"/>
+        <Image HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" VerticalAlignment="Center" Width="20" Source="Assets/Explorer.ico"/>
         <WrapPanel Grid.Column="1" HorizontalAlignment="Right" FlowDirection="RightToLeft">
-            <Button x:Name="closebtn" Margin="0" Width="35" HorizontalAlignment="Center" Height="27" FontFamily="Segoe MDL2 Assets" Content="&#xE8BB;" Style="{DynamicResource ButtonRed}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" Click="closebtn_Click"/>
-            <Button x:Name="resizebtn" Margin="0" Width="35" HorizontalAlignment="Center" Height="27" FontFamily="Segoe MDL2 Assets" Content="&#xE922;" Style="{DynamicResource ClearButton}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" Click="resizebtn_Click"/>
-            <Button x:Name="minimisebtn" Margin="0" Width="35" HorizontalAlignment="Center" Height="27" FontFamily="Segoe MDL2 Assets" Content="&#xE921;" Style="{DynamicResource ClearButton}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" Click="minimisebtn_Click"/>
+            <Button x:Name="closebtn" Margin="0" Width="35" HorizontalAlignment="Center" Height="27" FontFamily="Segoe MDL2 Assets" Content="&#xE8BB;" Style="{DynamicResource ButtonRed}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" Click="closebtn_Click" Foreground="{Binding foregroundSolid}"/>
+            <Button x:Name="resizebtn" Margin="0" Width="35" HorizontalAlignment="Center" Height="27" FontFamily="Segoe MDL2 Assets" Content="&#xE922;" Style="{DynamicResource ClearButton}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" Click="resizebtn_Click" Foreground="{Binding foregroundSolid}"/>
+            <Button x:Name="minimisebtn" Margin="0" Width="35" HorizontalAlignment="Center" Height="27" FontFamily="Segoe MDL2 Assets" Content="&#xE921;" Style="{DynamicResource ClearButton}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" Click="minimisebtn_Click" Foreground="{Binding foregroundSolid}"/>
         </WrapPanel>
         <!--#endregion-->
 
@@ -284,15 +319,11 @@
         </TabControl>-->
 
         <!--#region Tabs-->
-        <WrapPanel Grid.Column="1" Margin="0,0,110,0">
-            <Grid HorizontalAlignment="Left" Width="150" Grid.Column="1" Background="White">
-                <Image HorizontalAlignment="Left" Height="20" Margin="10,3.5,0,3.5" VerticalAlignment="Center" Width="20" Source="Assets/ThisPC.ico"/>
-                <Label Content="This PC" HorizontalAlignment="Left" Margin="35,-1.637,0,1.636" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
-            </Grid>
-            <Button Margin="0" Width="27" HorizontalAlignment="Center" Height="27" FontFamily="Segoe MDL2 Assets" Content="&#xE710;" Style="{DynamicResource ClearButton}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="16" FontWeight="Bold"/>
+        <WrapPanel x:Name="Tabs" Grid.Column="1" Margin="0,0,110,0">
+            <Button x:Name="CreateTabBtn" Margin="0" Width="27" HorizontalAlignment="Center" Height="27" FontFamily="Segoe MDL2 Assets" Content="&#xE710;" Style="{DynamicResource ClearButton}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="16" Foreground="{Binding foregroundSolid}" Click="CreateTab" FontWeight="Bold"/>
         </WrapPanel>
         <!--#endregion-->
 
-        <Frame x:Name="ExplorerWindow" Grid.Column="1" Margin="0" Grid.Row="1" Foreground="{x:Null}" Source="/Windows 20 Explorer Concept;component/ExplorerPage.xaml" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="ExplorerWindow" Margin="0" Grid.Row="1" Foreground="{x:Null}" Source="/Windows 20 Explorer Concept;component/ExplorerPage.xaml" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -14,6 +14,7 @@ namespace Windows_20_Explorer_Concept
         #region TEMPLATE
         #region Solids
         public string backgroundSolid { get; set; } = Styles.background;
+        public string backgroundSolid45 { get; set; } = "#72" + Styles.background.Substring(3);
 
         public string foregroundSolid { get; set; } = Styles.foreground;
 

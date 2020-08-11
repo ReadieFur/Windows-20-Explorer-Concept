@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:Windows_20_Explorer_Concept"
              StartupUri="Explorer20.xaml">
     <Application.Resources>
-         
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Simple Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

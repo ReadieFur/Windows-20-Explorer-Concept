@@ -4,10 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Windows_20_Explorer_Concept"
-      mc:Ignorable="d" Height="523" Width="758"
-      Title="ExplorerPage">
+      mc:Ignorable="d" MinHeight="523" MinWidth="950" Loaded="Page_Loaded">
+
+    <Page.DataContext>
+        <local:XAMLStyles/>
+    </Page.DataContext>
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Background="{Binding backgroundSolid}">
+            
+        </Grid>
+        <Grid Grid.Column="0">
+
+        </Grid>
     </Grid>
 </Page>
