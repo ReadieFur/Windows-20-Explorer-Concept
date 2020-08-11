@@ -37,6 +37,7 @@ namespace Windows_20_Explorer_Concept
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            WindowBorder.Visibility = Visibility.Visible;
             BlurWindow.EnableBlur(this);
 
             winAero.Interval = 10;
@@ -58,9 +59,10 @@ namespace Windows_20_Explorer_Concept
                 if (Width == SystemParameters.WorkArea.Width && Height == SystemParameters.WorkArea.Height)
                 {
                     Top = System.Windows.Forms.Control.MousePosition.Y - 15;
-                    Left = System.Windows.Forms.Control.MousePosition.X - 475;
+                    Left = System.Windows.Forms.Control.MousePosition.X - previousWidth / 2;
                     Width = previousWidth;
                     Height = previousHeight;
+                    WindowBorder.Visibility = Visibility.Visible;
                     resizebtn.Content = "\uE922";
                     DragMove();
                 }
@@ -70,6 +72,7 @@ namespace Windows_20_Explorer_Concept
                     Left = 0;
                     Width = SystemParameters.WorkArea.Width;
                     Height = SystemParameters.WorkArea.Height;
+                    WindowBorder.Visibility = Visibility.Hidden;
                     resizebtn.Content = "\uE923";
                 }
                 else
@@ -101,6 +104,7 @@ namespace Windows_20_Explorer_Concept
                 Left = 0;
                 Height = SystemParameters.WorkArea.Height;
                 Width = SystemParameters.WorkArea.Width;
+                WindowBorder.Visibility = Visibility.Hidden;
                 resizebtn.Content = "\uE923";
             }
             else
@@ -110,6 +114,7 @@ namespace Windows_20_Explorer_Concept
                 Height = previousHeight;
                 Top = previousTop;
                 Left = previousLeft;
+                WindowBorder.Visibility = Visibility.Visible;
                 resizebtn.Content = "\uE922";
             }
         }
@@ -129,10 +134,12 @@ namespace Windows_20_Explorer_Concept
                         Left = 0;
                         Width = SystemParameters.WorkArea.Width;
                         Height = SystemParameters.WorkArea.Height;
+                        WindowBorder.Visibility = Visibility.Hidden;
                         resizebtn.Content = "\uE923";
                     }
                     else if (Width != SystemParameters.WorkArea.Width && Height != SystemParameters.WorkArea.Height)
                     {
+                        WindowBorder.Visibility = Visibility.Visible;
                         resizebtn.Content = "\uE922";
                     }
 
@@ -216,8 +223,8 @@ namespace Windows_20_Explorer_Concept
 
                 Button Close = new Button();
                 Close.Style = FindResource("ClearButton") as Style;
-                Close.Width = 27;
-                Close.Height = 27;
+                Close.Width = 30;
+                Close.Height = 30;
                 Close.Content = "\uE8BB";
                 Close.FontFamily = new System.Windows.Media.FontFamily("Segoe MDL2 Assets");
                 Close.HorizontalAlignment = HorizontalAlignment.Right;

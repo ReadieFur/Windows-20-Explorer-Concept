@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HorizontalScroll.cs" />
     <Compile Include="Styles.cs" />
     <Page Include="Explorer20.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +116,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Resource Include="Assets\WinDrive.ico" />
+    <Resource Include="Assets\Drive.ico" />
     <Resource Include="Assets\Explorer.ico" />
     <Resource Include="Assets\dll.ico" />
     <Resource Include="Assets\bat.ico" />
