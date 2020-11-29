@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
@@ -44,7 +46,7 @@ namespace Windows_20_Explorer_Concept
                 checkForChange.Start();
 
                 IndexThisPC();
-            }            
+            }
         }
 
         //https://stackoverflow.com/questions/14488796/does-net-provide-an-easy-way-convert-bytes-to-kb-mb-gb-etc
@@ -75,7 +77,7 @@ namespace Windows_20_Explorer_Concept
                     DriveContainer.Width = 250;
                     DriveContainer.Height = 60;
                     DriveContainer.Margin = new Thickness(10, 5, 5, 0);
-                    DriveContainer.MouseDown += (se, ev) => { if (ev.ClickCount == 2) { IndexFiles(drive.Name); } };
+                    DriveContainer.MouseDown += (se, ev) => { if (ev.ClickCount == 2) { IndexFiles(drive.Name.Replace("\\", "\\\\")); } };
                     DriveContainer.MouseEnter += (se, ev) => { DriveContainer.Background = Styles.bc("#3FFFFFFF"); };
                     DriveContainer.MouseLeave += (se, ev) => { DriveContainer.Background = null; };
 
@@ -108,7 +110,7 @@ namespace Windows_20_Explorer_Concept
                     DriveSpace.HorizontalAlignment = HorizontalAlignment.Stretch;
                     DriveSpace.BorderThickness = new Thickness(0);
                     DriveSpace.Style = FindResource("BindProgressBar") as Style;
-                    DriveSpace.Value = 100 - Math.Truncate((double)drive.TotalFreeSpace / drive.TotalSize* 100);
+                    DriveSpace.Value = 100 - Math.Truncate((double)drive.TotalFreeSpace / drive.TotalSize * 100);
 
                     Label DriveInfo = new Label();
                     DriveInfo.Content = $"{FormatBytes(drive.AvailableFreeSpace)} free of {FormatBytes(drive.TotalSize)}";
@@ -127,9 +129,44 @@ namespace Windows_20_Explorer_Concept
             }
         }
 
+        string[] InvalidChars = {  };
+        List<string> VisitedDirectories = new List<string> {"This PC"};
+
         private void IndexFiles(string Dir)
         {
-            throw new NotImplementedException();
+            string[] files = Directory.GetFiles(Dir);
+        }
+
+        private void PageDir_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (InvalidChars.All(PageDir.Text.Contains)) { MessageBox.Show("The specified path is invalid.", "Invalid Path"); } //No Regex match "new Regex(@"^[<>;*?|]$").IsMatch(PageDir.Text)"
+                else
+                {
+                    try
+                    {
+                        VisitedDirectories.Add(PageDir.Text.Replace("\"", "").Replace("\\\\", "\\").Replace("\\", "\\\\"));
+                        PageDir.Text = VisitedDirectories.Last().Replace("\\\\", " > ");
+                        Keyboard.ClearFocus();
+                        FocusManager.SetFocusedElement(FocusManager.GetFocusScope(PageDir), null);
+                        IndexFiles(VisitedDirectories.Last());
+                    }
+                    catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error indexing directory"); }
+                }                
+            }
+        }
+
+        private void PageDir_GotFocus(object sender, RoutedEventArgs e) { PageDir.Text = VisitedDirectories.Last().Replace("\\\\", "\\"); }
+
+        private void Page_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (PageDir.IsFocused)
+            {
+                Keyboard.ClearFocus();
+                FocusManager.SetFocusedElement(FocusManager.GetFocusScope(PageDir), null);
+                PageDir.Text = VisitedDirectories.Last().Replace("\\\\", " > ");
+            }
         }
     }
 }

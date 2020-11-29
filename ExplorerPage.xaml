@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Windows_20_Explorer_Concept"
+      xmlns:local="clr-namespace:Windows_20_Explorer_Concept" MouseDown="Page_MouseDown"
       mc:Ignorable="d" MinHeight="523" MinWidth="950" Loaded="Page_Loaded">
 
     <Page.DataContext>
@@ -150,7 +150,7 @@
             <Grid Height="25" Margin="10,15,15,0" VerticalAlignment="Top">
                 <Grid Height="25" Margin="75,0,0,0" VerticalAlignment="Top">
                     <Rectangle Fill="#3FFFFFFF" Margin="0" StrokeThickness="0" RadiusY="5" RadiusX="5"/>
-                    <TextBox x:Name="PageDir" Height="25" Margin="5,0" BorderThickness="0" TextWrapping="Wrap" Text="This PC" VerticalAlignment="Top" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" SelectionBrush="{Binding accentSolid}" Foreground="{Binding foregroundSolid}" AllowDrop="False"/>
+                    <TextBox x:Name="PageDir" Height="25" Margin="5,0" BorderThickness="0" TextWrapping="Wrap" Text="This PC" VerticalAlignment="Top" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" SelectionBrush="{Binding accentSolid}" Foreground="{Binding foregroundSolid}" AllowDrop="False" KeyDown="PageDir_KeyDown" GotFocus="PageDir_GotFocus"/>
                 </Grid>
                 <WrapPanel HorizontalAlignment="Left" Height="25" Margin="0" VerticalAlignment="Top">
                     <Button x:Name="PageBack" Margin="0" Width="30" HorizontalAlignment="Center" Height="25" FontFamily="Segoe MDL2 Assets" Content="&#xEC52;" Style="{DynamicResource ClearButton}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" Foreground="{Binding foregroundSolid}" FontWeight="Bold" IsEnabled="False"/>
